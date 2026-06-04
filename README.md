@@ -1,122 +1,63 @@
 # Bag of Skills
 
-A personal collection of reusable coding agent skills. These are designed for use with [pi](https://pi.dev) and other agents that follow the [Agent Skills standard](https://agentskills.io).
+A collection of agent-agnostic skills following the [Agent Skills standard](https://agentskills.io). These are stateless capabilities that read from and write to a project-local `.context/` directory to maintain continuity across sessions.
 
-This is not a runnable project — it is a shared library of capabilities that you install into individual projects.
+This repository is not a standalone project. It is meant to be cloned into a `.skills/` directory within other repositories.
 
 ---
 
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| `save-session` | Persist the current development session to a timestamped file in `.context/` |
-| `get-up-to-speed` | Read `.context/` files to understand project state before continuing work |
-| `plan-and-implement` | Collaborative planning phase before any code is written |
-| `generate-commit-message` | Analyze staged changes and generate a Conventional Commit message |
-| `architecture-review` | Deep codebase analysis for refactoring and testability improvements |
-| `project-spec-generator` | Explore a codebase and produce a comprehensive project specification |
+| Skill                     | Description                                                                                                                                                      |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `save-session`            | Capture the current session — files changed, decisions made, test state, open items — to a timestamped markdown file in `.context/`.                             |
+| `get-up-to-speed`         | Read the most recent `.context/` files at session start to reconstruct project state, recent changes, and next steps without relying on model context.           |
+| `plan-and-implement`      | Explore the codebase, present implementation options with tradeoffs, grill the user on constraints, and crystallize an explicit plan before any code is written. |
+| `generate-commit-message` | Inspect staged changes, recent commit history, and `.context/` files to draft a Conventional Commit message for user approval.                                   |
+| `architecture-review`     | Walk the codebase to identify coupling, untested modules, shallow abstractions, and mixed concerns. Presents ranked candidates for refactoring.                  |
+| `project-spec-generator`  | Deeply explore a codebase and emit a comprehensive project spec covering stack, schemas, routes, features, design decisions, and technical debt.                 |
 
 ---
 
-## Quick Start
+## Install
 
-### Install skills into a project
-
-Drop `install.sh` into any project root and run it:
+Drop `install.sh` into the target project root and execute it:
 
 ```bash
 curl -O https://raw.githubusercontent.com/johngohrw/bag-of-skills/main/install.sh
 bash install.sh
 ```
 
-Or clone manually:
+The script performs the following:
 
-```bash
-git clone --depth 1 https://github.com/johngohrw/bag-of-skills.git .skills
-echo ".skills/" >> .gitignore
-```
+1. Aborts if `AGENTS.md` already exists in the project root (to prevent overwriting existing agent instructions).
+2. Clones this repository into `.skills/` via a shallow clone.
+3. Copies `AGENTS.md` from `.skills/` into the project root.
+4. Appends `.skills/` to `.gitignore` if not already present.
+5. Deletes `install.sh`.
 
-### What `install.sh` does
+---
 
-1. Clones this repo into `.skills/`
-2. Copies `AGENTS.md` into your project root (aborts if one already exists)
-3. Adds `.skills/` to `.gitignore`
-4. Deletes itself
+## Update
 
-### Update skills
-
-```bash
-cd .skills && git pull
-```
-
-Or if `update.sh` was included:
+Each project maintains its own `.skills/` clone. To update skills in a project:
 
 ```bash
 .skills/update.sh
 ```
 
+This is a thin wrapper around `git pull` executed from within `.skills/`.
+
 ---
 
 ## The `.context/` Convention
 
-Most skills in this collection read from and write to a `.context/` directory in the project root. This is where session summaries, architecture decisions, and project specs live.
+Most skills in this collection interact with a `.context/` directory at the project root. This directory serves as out-of-band persistent memory: session summaries, architecture decisions, project specs, and other continuity artifacts are written here by agents and read back on subsequent invocations.
 
-**Why `.context/`?** It gives every project its own persistent memory. Agents can save state at the end of a session and resume from it in the next one.
-
-Example `.context/` contents:
-
-```
-.context/
-  session-2026-06-05.md
-  session-2026-06-05-pm.md
-  project-spec-2026-05-01.md
-  architecture-decisions.md
-```
+Because `.context/` lives inside the project, it can be committed to git or left untracked, depending on whether you want session history to travel with the repository.
 
 ---
 
 ## `AGENTS.md`
 
-The repo includes an `AGENTS.md` file that provides introductory context for coding agents. When installed into a project, pi (and other compatible agents) automatically read it at startup — no need to tell the agent about the skills manually.
-
-> **Note:** `install.sh` will abort if an `AGENTS.md` already exists in the target directory, to avoid overwriting your project's own agent instructions.
-
----
-
-## Repo Structure
-
-```
-bag-of-skills/
-  AGENTS.md                    # Introductory context for agents
-  README.md                    # This file
-  install.sh                   # One-shot installer for new projects
-  update.sh                    # Helper to git pull from within .skills/
-  save-session/SKILL.md
-  get-up-to-speed/SKILL.md
-  plan-and-implement/SKILL.md
-  generate-commit-message/SKILL.md
-  architecture-review/SKILL.md
-  project-spec-generator/SKILL.md
-```
-
----
-
-## Customizing the Repo URL
-
-The install script defaults to this repo, but you can override it:
-
-```bash
-SKILLS_REPO="https://github.com/johngohrw/bag-of-skills.git" bash install.sh
-```
-
-Or edit `REPO_URL` directly in `install.sh` before distributing it.
-
----
-
-## Adding New Skills
-
-1. Create a new directory: `my-new-skill/`
-2. Add a `SKILL.md` following the [Agent Skills standard](https://agentskills.io)
-3. Commit and push
-4. In each project, `cd .skills && git pull` to receive the new skill
+This repository includes an `AGENTS.md` containing introductory context about the skills collection. When `install.sh` runs, it copies this file into the project root. Agents that support context files (e.g. pi, Claude Code) automatically load `AGENTS.md` at startup when walking up from the working directory. This means a freshly started agent knows about the available skills and conventions without explicit prompting.
