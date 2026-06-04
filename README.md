@@ -11,11 +11,11 @@ This repository is not a standalone project. It is meant to be cloned into a `.s
 | Skill                     | Description                                                                                                                                                      |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `save-session`            | Capture the current session — files changed, decisions made, test state, open items — to a timestamped markdown file in `.context/`.                             |
-| `get-up-to-speed`         | Read the most recent `.context/` files at session start to reconstruct project state, recent changes, and next steps without relying on model context.           |
-| `plan-and-implement`      | Explore the codebase, present implementation options with tradeoffs, grill the user on constraints, and crystallize an explicit plan before any code is written. |
+| `resume-session`          | Read the most recent `.context/` files at session start to reconstruct project state, recent changes, and next steps without relying on model context.           |
+| `plan-then-build`         | Explore the codebase, present implementation options with tradeoffs, grill the user on constraints, and crystallize an explicit plan before any code is written. |
 | `generate-commit-message` | Inspect staged changes, recent commit history, and `.context/` files to draft a Conventional Commit message for user approval.                                   |
-| `architecture-review`     | Walk the codebase to identify coupling, untested modules, shallow abstractions, and mixed concerns. Presents ranked candidates for refactoring.                  |
-| `project-spec-generator`  | Deeply explore a codebase and emit a comprehensive project spec covering stack, schemas, routes, features, design decisions, and technical debt.                 |
+| `arch-review`             | Walk the codebase to identify coupling, untested modules, shallow abstractions, and mixed concerns. Presents ranked candidates for refactoring.                  |
+| `spec-gen`                | Deeply explore a codebase and emit a comprehensive project spec covering stack, schemas, routes, features, design decisions, and technical debt.                 |
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: architecture-review
+name: arch-review
 description: Deeply analyze a codebase for architectural improvements, refactoring opportunities, and testability issues. Walks through exploration, candidate presentation, and a collaborative implementation loop with the user. Use when the codebase feels messy, untested, hard to navigate, or when preparing for feature work that touches core structures.
 ---
 

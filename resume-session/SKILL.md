@@ -1,5 +1,5 @@
 ---
-name: get-up-to-speed
+name: resume-session
 description: Reads the latest timestamped context files from .context/ to understand the current project state, tech stack, recent changes, and blockers before continuing development. Use at the start of any session when you need to catch up on where the project stands.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: plan-and-implement
+name: plan-then-build
 description: Collaborative feature planning and implementation skill. The user brings an idea; you analyze the codebase, surface options, grill the user (and yourself) on tradeoffs, and only write code once the plan is fully crystallized and explicitly approved. Use for any new feature, significant refactor, or architectural change.
 ---
 

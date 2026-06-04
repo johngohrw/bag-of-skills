@@ -9,11 +9,11 @@ Each skill lives in its own directory with a `SKILL.md` file, following the
 
 ## Skills included
 - `save-session` — persist session state to `.context/`
-- `get-up-to-speed` — read `.context/` to resume work
-- `plan-and-implement` — collaborative planning before coding
+- `resume-session` — read `.context/` to resume work
+- `plan-then-build` — collaborative planning before coding
 - `generate-commit-message` — conventional commit drafting
-- `architecture-review` — deep codebase analysis
-- `project-spec-generator` — generate comprehensive project specs
+- `arch-review` — deep codebase analysis
+- `spec-gen` — generate comprehensive project specs
 
 ## Usage in projects
 Projects clone this repo into `.skills/`. Skills read and write to the

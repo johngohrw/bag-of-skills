@@ -1,5 +1,5 @@
 ---
-name: project-spec-generator
+name: spec-gen
 description: Explore a codebase deeply and generate a comprehensive project spec document describing stack, structure, architecture, schemas, routes, features, and design decisions. Use when the user wants to understand a project, onboard to it, or document its current state.
 ---
 
