@@ -6,7 +6,6 @@ set -euo pipefail
 
 REPO_URL="${SKILLS_REPO:-https://github.com/johngohrw/bag-of-skills.git}"
 TARGET_DIR=".skills"
-GITIGNORE=".gitignore"
 
 echo "📦 Installing skills from $REPO_URL ..."
 
@@ -35,22 +34,9 @@ echo "✅ Skills installed to $TARGET_DIR/"
 cp "$TARGET_DIR/AGENTS.md" "AGENTS.md"
 echo "📋 Copied AGENTS.md to project root"
 
-# Add to .gitignore if not already present
-if [ -f "$GITIGNORE" ]; then
-  if grep -qxF "$TARGET_DIR/" "$GITIGNORE" || grep -qxF "$TARGET_DIR" "$GITIGNORE"; then
-    echo "📋 $TARGET_DIR/ already in $GITIGNORE"
-  else
-    echo "" >> "$GITIGNORE"
-    echo "$TARGET_DIR/" >> "$GITIGNORE"
-    echo "📋 Added $TARGET_DIR/ to $GITIGNORE"
-  fi
-else
-  echo "$TARGET_DIR/" > "$GITIGNORE"
-  echo "📋 Created $GITIGNORE with $TARGET_DIR/"
-fi
-
 echo ""
 echo "Done. Your project now has its own .skills/ instance."
+echo "Commit .skills/ and AGENTS.md to your repo to share the setup with your team."
 echo "To update later, run: cd $TARGET_DIR && git pull"
 
 # Self-destruct

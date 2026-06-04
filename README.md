@@ -33,8 +33,9 @@ The script performs the following:
 1. Aborts if `AGENTS.md` already exists in the project root (to prevent overwriting existing agent instructions).
 2. Clones this repository into `.skills/` via a shallow clone.
 3. Copies `AGENTS.md` from `.skills/` into the project root.
-4. Appends `.skills/` to `.gitignore` if not already present.
-5. Deletes `install.sh`.
+4. Deletes `install.sh`.
+
+> **Note:** `.skills/` is not added to `.gitignore`. Commit it alongside `AGENTS.md` so your team shares the same skill set.
 
 ---
 
