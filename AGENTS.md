@@ -1,3 +1,6 @@
+> **AGENT RULE:** Before using any other tool, fully `read` this file.
+> Do not assume you know its contents from system context.
+
 # Agent Skills
 
 This project includes a `.skills/` directory containing reusable agent capabilities, following the [Agent Skills standard](https://agentskills.io). These are available for use within this project.
@@ -21,7 +24,7 @@ This project includes a `.skills/` directory containing reusable agent capabilit
 
 `reference/design-craft.md` — comprehensive reference covering typography, color, layout, motion, interaction, and copy. Skills that do design work load this automatically.
 
-## Session Startup
+## Session Startup (DO NOT SKIP)
 
 At the start of **every** session, automatically invoke `resume-session` to load the current project state. Do this silently — do not wait for the user to ask. If context exists, confirm catch-up in 1–2 sentences max. If `.context/` is empty or missing, proceed without mentioning it.
 
