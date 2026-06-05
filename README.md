@@ -16,6 +16,10 @@ This repository is not a standalone project. It is meant to be cloned into a `.s
 | `generate-commit-message` | Inspect staged changes, recent commit history, and `.context/` files to draft a Conventional Commit message for user approval.                                   |
 | `arch-review`             | Walk the codebase to identify coupling, untested modules, shallow abstractions, and mixed concerns. Presents ranked candidates for refactoring.                  |
 | `spec-gen`                | Deeply explore a codebase and emit a comprehensive project spec covering stack, schemas, routes, features, design decisions, and technical debt.                 |
+| `design-init`             | One-time design context setup: interviews the user and writes `.context/PRODUCT.md` and `.context/DESIGN.md`.                                                     |
+| `design-brief`            | UX and visual planning for a frontend feature before any code is written. Produces a confirmed design brief.                                                     |
+| `design-audit`            | Scored quality check on frontend code across a11y, performance, theming, responsive, and anti-patterns. Outputs a ranked report.                                   |
+| `design-polish`           | Shipping readiness pass on UI surfaces. Checks states, micro-interactions, copy, and edge cases.                                                                 |
 
 ---
 

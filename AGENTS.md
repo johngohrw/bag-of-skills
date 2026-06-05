@@ -12,6 +12,14 @@ This project includes a `.skills/` directory containing reusable agent capabilit
 | `generate-commit-message` | Conventional commit drafting |
 | `arch-review` | Deep codebase analysis |
 | `spec-gen` | Generate comprehensive project specs |
+| `design-init` | One-time design context setup (PRODUCT.md / DESIGN.md) |
+| `design-brief` | UX and visual planning before implementing UI |
+| `design-audit` | Scored quality check on frontend code |
+| `design-polish` | Shipping readiness pass on UI surfaces |
+
+## Design Reference
+
+`reference/design-craft.md` — comprehensive reference covering typography, color, layout, motion, interaction, and copy. Skills that do design work load this automatically.
 
 ## `.context/` Convention
 
