@@ -11,7 +11,7 @@ This repository is not a standalone project. It is meant to be cloned into a `.s
 | Skill                     | Description                                                                                                                                                      |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `save-session`            | Capture the current session — files changed, decisions made, test state, open items — to a timestamped markdown file in `.context/`.                             |
-| `resume-session`          | Read the most recent `.context/` files at session start to reconstruct project state, recent changes, and next steps without relying on model context.           |
+| `resume-session`          | Read the most recent `.context/` files to reconstruct project state. **Note:** this happens automatically at session startup via `AGENTS.md` — manual invocation is rarely needed. |
 | `plan-then-build`         | Explore the codebase, present implementation options with tradeoffs, grill the user on constraints, and crystallize an explicit plan before any code is written. |
 | `generate-commit-message` | Inspect staged changes, recent commit history, and `.context/` files to draft a Conventional Commit message for user approval.                                   |
 | `arch-review`             | Walk the codebase to identify coupling, untested modules, shallow abstractions, and mixed concerns. Presents ranked candidates for refactoring.                  |
@@ -60,6 +60,8 @@ This is a thin wrapper around `git pull` executed from within `.skills/`.
 Most skills in this collection interact with a `.context/` directory at the project root. This directory serves as out-of-band persistent memory: session summaries, architecture decisions, project specs, and other continuity artifacts are written here by agents and read back on subsequent invocations.
 
 Because `.context/` lives inside the project, it can be committed to git or left untracked, depending on whether you want session history to travel with the repository.
+
+**Automatic resume:** `AGENTS.md` instructs the agent to automatically read recent `.context/` files at every session startup. No manual `/skill:resume-session` invocation is needed.
 
 ---
 

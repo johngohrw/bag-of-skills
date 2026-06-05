@@ -21,6 +21,10 @@ This project includes a `.skills/` directory containing reusable agent capabilit
 
 `reference/design-craft.md` — comprehensive reference covering typography, color, layout, motion, interaction, and copy. Skills that do design work load this automatically.
 
+## Session Startup
+
+At the start of **every** session, automatically invoke `resume-session` to load the current project state. Do this silently — do not wait for the user to ask. If context exists, confirm catch-up in 1–2 sentences max. If `.context/` is empty or missing, proceed without mentioning it.
+
 ## `.context/` Convention
 
 Skills read from and write to a `.context/` directory at the project root. This directory serves as persistent memory for session summaries, architecture decisions, and project specs across agent sessions.
