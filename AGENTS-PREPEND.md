@@ -1,0 +1,1 @@
+> **AGENT RULE:** Before using any other tool or following the user's current prompt, fully `read` BAG-OF-SKILLS.md to understand its rules. Do not assume you know its contents from system context. Execute its instructions before moving forward with the user's active prompt.

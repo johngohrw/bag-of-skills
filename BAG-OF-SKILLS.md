@@ -1,6 +1,3 @@
-> **AGENT RULE:** Before using any other tool, fully `read` this file.
-> Do not assume you know its contents from system context.
-
 # Agent Skills
 
 This project includes a `.skills/` directory containing reusable agent capabilities, following the [Agent Skills standard](https://agentskills.io). These are available for use within this project.

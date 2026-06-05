@@ -34,12 +34,13 @@ bash install.sh
 
 The script performs the following:
 
-1. Aborts if `AGENTS.md` already exists in the project root (to prevent overwriting existing agent instructions).
-2. Clones this repository into `.skills/` via a shallow clone.
-3. Copies `AGENTS.md` from `.skills/` into the project root.
-4. Deletes `install.sh`.
+1. Clones this repository into `.skills/` via a shallow clone.
+2. Copies `BAG-OF-SKILLS.md` from `.skills/` into the project root (overwrites any preexisting file).
+3. Ensures `AGENTS.md` exists in the project root, creating it if necessary.
+4. Prepends `AGENTS-PREPEND.md` from `.skills/` to the start of `AGENTS.md` if not already present.
+5. Deletes `install.sh`.
 
-> **Note:** `.skills/` is not added to `.gitignore`. Commit it alongside `AGENTS.md` so your team shares the same skill set.
+> **Note:** `.skills/` is not added to `.gitignore`. Commit it alongside `AGENTS.md` and `BAG-OF-SKILLS.md` so your team shares the same skill set.
 
 ---
 
@@ -65,6 +66,11 @@ Because `.context/` lives inside the project, it can be committed to git or left
 
 ---
 
-## `AGENTS.md`
+## `AGENTS.md` and `BAG-OF-SKILLS.md`
 
-This repository includes an `AGENTS.md` containing introductory context about the skills collection. When `install.sh` runs, it copies this file into the project root. Agents that support context files (e.g. pi, Claude Code) automatically load `AGENTS.md` at startup when walking up from the working directory. This means a freshly started agent knows about the available skills and conventions without explicit prompting.
+This repository provides two files that work together:
+
+- **`BAG-OF-SKILLS.md`** — the full skills documentation, conventions, and reference. Copied to the project root on install.
+- **`AGENTS-PREPEND.md`** — a short directive that tells the agent to read `BAG-OF-SKILLS.md` before proceeding. Automatically prepended to the project's `AGENTS.md`.
+
+Agents that support context files (e.g. pi, Claude Code) automatically load `AGENTS.md` at startup. The prepended directive ensures the agent reads the full skills documentation from `BAG-OF-SKILLS.md` without requiring manual invocation.
