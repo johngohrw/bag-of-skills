@@ -1,3 +1,5 @@
+> **AGENT RULE:** invoke `resume-session` skill before proceeding with user prompt, as stated below in "Session Startup". do NOT read user prompt before executing `resume-session`.
+
 # Agent Skills
 
 This project includes a `.skills/` directory containing reusable agent capabilities, following the [Agent Skills standard](https://agentskills.io). These are available for use within this project.
